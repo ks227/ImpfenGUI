@@ -763,7 +763,7 @@ public class impfenGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    Anwendung anwendung=new Anwendung();
     private void tfStatusImpfungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfStatusImpfungActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfStatusImpfungActionPerformed
@@ -790,7 +790,13 @@ public class impfenGUI extends javax.swing.JFrame {
 
     private void btImpfenImpfenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btImpfenImpfenActionPerformed
         // TODO add your handling code here:
-        taImpfenOUT.setText("Der Patient wurde geimpft");
+        try{
+            anwendung.Impfen(tfImpfenName.getText(),tfImpfenImpfung.getText());
+            taImpfenOUT.setText("Patient hinzugefügt");
+        }
+        catch(Exception e){
+            taImpfenOUT.setText("Der Patient oder die Impfung ist nicht vorhanden");
+        }
             
     }//GEN-LAST:event_btImpfenImpfenActionPerformed
 
