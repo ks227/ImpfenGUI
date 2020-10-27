@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
  
-
+import javax.swing.JOptionPane.*;
 /**
  *
  * @author Konrad Sautter
@@ -774,6 +774,13 @@ public class impfenGUI extends javax.swing.JFrame {
 
     private void tfImpfenNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfImpfenNameActionPerformed
         // TODO add your handling code here:
+        try{
+            String s = tfImpfenName.getText();
+            tfImpfenName.setText(" ");
+        }
+        catch(Exception e){
+            javax.swing.JOptionPane.showMessageDialog(this,"Bitte richtigen Namen eingeben!","Fehler",javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_tfImpfenNameActionPerformed
 
     private void tfImpfenImpfungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfImpfenImpfungActionPerformed
@@ -806,6 +813,13 @@ public class impfenGUI extends javax.swing.JFrame {
 
     private void btStatusAbfragenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btStatusAbfragenActionPerformed
         // TODO add your handling code here:
+        try{
+            String stat  = anwendung.StatusAbfragen(tfStatusName.getText(),tfStatusImpfung.getText());
+            taStatusOUT.setText(stat);
+        }
+        catch(NullPointerException e){
+            taStatusOUT.setText("Patient oder Impfung ist nicht vorhanden!");
+        }
     }//GEN-LAST:event_btStatusAbfragenActionPerformed
 
     private void tfStatusNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfStatusNameActionPerformed
@@ -818,6 +832,13 @@ public class impfenGUI extends javax.swing.JFrame {
 
     private void btAllgStatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllgStatActionPerformed
         // TODO add your handling code here:
+        try{
+            String allgStat = anwendung.AllgemeinerStatus(tfAllgStatName.getText());
+            taAllgStatOUT.setText(allgStat);
+        }
+        catch(NullPointerException e){
+            taAllgStatOUT.setText("Patient nicht vorhanden! Bitte hinzufügen!");
+        }
     }//GEN-LAST:event_btAllgStatActionPerformed
 
     private void tfInfoNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInfoNameActionPerformed
@@ -826,6 +847,13 @@ public class impfenGUI extends javax.swing.JFrame {
 
     private void btInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInfoActionPerformed
         // TODO add your handling code here:
+        try{
+            String info = anwendung.InformationenAbfragen(tfInfoName.getText(),tfInfoImpfung.getText());
+            taInfoOUT.setText(info);
+        }
+        catch(NullPointerException e){
+            taInfoOUT.setText("Patient oder Impfung ist nicht vorhanden!");
+        }
     }//GEN-LAST:event_btInfoActionPerformed
 
     private void btSuchenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuchenActionPerformed
