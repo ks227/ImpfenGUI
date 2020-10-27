@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
  
-import javax.swing.JOptionPane.*;
+
 /**
  *
- * @author Konrad Sautter
+ * @author Konrad Sautter, Hannah Schweitz
  */
 public class impfenGUI extends javax.swing.JFrame {
 
@@ -16,6 +16,11 @@ public class impfenGUI extends javax.swing.JFrame {
      */
     public impfenGUI() {
         initComponents();
+        taSuchenOUT.setEditable(false);
+        taHzfgOUT.setEditable(false);
+        taLoeschenOUT.setEditable(false);
+        taDatenOUT.setEditable(false);
+        //sbPatient.setLineWrap(true);
     }
 
     /**
@@ -763,18 +768,27 @@ public class impfenGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
     Anwendung anwendung=new Anwendung();
+    Anwendung a1 = new Anwendung();
+    String Patientenname, Impfung, Geburtsdatum, Geschlecht, Adresse, Telefonnummer, Daten, neueDaten;
+    //impfstatus
     private void tfStatusImpfungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfStatusImpfungActionPerformed
         // TODO add your handling code here:
+        Impfung = tfStatusImpfung.getText();
     }//GEN-LAST:event_tfStatusImpfungActionPerformed
 
+    //info
     private void tfInfoImpfungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInfoImpfungActionPerformed
         // TODO add your handling code here:
+        Impfung = tfInfoImpfung.getText();
     }//GEN-LAST:event_tfInfoImpfungActionPerformed
 
+    //impfen
     private void tfImpfenNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfImpfenNameActionPerformed
         // TODO add your handling code here:
-        try{
+         try{
             String s = tfImpfenName.getText();
             tfImpfenName.setText(" ");
         }
@@ -785,16 +799,22 @@ public class impfenGUI extends javax.swing.JFrame {
 
     private void tfImpfenImpfungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfImpfenImpfungActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_tfImpfenImpfungActionPerformed
 
+    //suche
     private void tfSuchenNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSuchenNameActionPerformed
         // TODO add your handling code here:
+        Patientenname = tfSuchenName.getText();
     }//GEN-LAST:event_tfSuchenNameActionPerformed
 
+    //hinzufügen
     private void tfHzfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHzfNameActionPerformed
         // TODO add your handling code here:
+        Patientenname = tfHzfName.getText();
     }//GEN-LAST:event_tfHzfNameActionPerformed
 
+    //impfen
     private void btImpfenImpfenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btImpfenImpfenActionPerformed
         // TODO add your handling code here:
         try{
@@ -803,14 +823,43 @@ public class impfenGUI extends javax.swing.JFrame {
         }
         catch(Exception e){
             taImpfenOUT.setText("Der Patient oder die Impfung ist nicht vorhanden");
-        }
-            
+        } 
     }//GEN-LAST:event_btImpfenImpfenActionPerformed
 
+    //ändern
     private void btDatenAendernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDatenAendernActionPerformed
         // TODO add your handling code here:
+        Patient P = a1.PatientSuchen(Patientenname);
+        String ausgabe;
+        switch(Daten)
+        {
+            case "Patientenname": P.setPatientenname(neueDaten);
+                ausgabe= Daten  + "  erfolgreich geändert";
+                break;
+                case "Geburtsdatum": P.setGeburtsdatum(neueDaten);
+                ausgabe= Daten + "  erfolgreich geändert";
+                break;
+                case "Geschlecht": P.setGeschlecht(neueDaten);
+                ausgabe= Daten + "  erfolgreich geändert";
+                break;
+                case "Adresse": P.setAdresse(neueDaten);
+                ausgabe= Daten + "  erfolgreich geändert";
+                break;
+                case "Telefonnummer": P.setTelefonnummer(neueDaten);
+                ausgabe= Daten + "  erfolgreich geändert";
+                break;
+                default: ausgabe="falsche Eingabe";
+        }
+        taDatenOUT.setText(ausgabe);
+        tfDatenPatientName.setText("Name eingeben");
+        Patientenname = null;
+        tfDatenZuAendern.setText("Zu ändernde Daten");
+        Daten = null;
+        tfDatenNeu.setText("Neue Daten");
+        neueDaten = null;
     }//GEN-LAST:event_btDatenAendernActionPerformed
 
+    //impfstatus
     private void btStatusAbfragenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btStatusAbfragenActionPerformed
         // TODO add your handling code here:
         try{
@@ -820,14 +869,25 @@ public class impfenGUI extends javax.swing.JFrame {
         catch(NullPointerException e){
             taStatusOUT.setText("Patient oder Impfung ist nicht vorhanden!");
         }
+        
+        // String Status = a1.StatusAbfragen(Patientenname, Impfung);
+        // taStatusOUT.setText(Status);
+        // Impfung = null;
+        // tfStatusImpfung.setText("Impfung");
+        // Patientenname = null;
+        // tfStatusName.setText("Name eingeben");
+        
     }//GEN-LAST:event_btStatusAbfragenActionPerformed
 
     private void tfStatusNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfStatusNameActionPerformed
         // TODO add your handling code here:
+        Patientenname = tfStatusName.getText();
     }//GEN-LAST:event_tfStatusNameActionPerformed
 
+    //gesamtimpfstatus
     private void tfAllgStatNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAllgStatNameActionPerformed
         // TODO add your handling code here:
+        Patientenname = tfAllgStatName.getText();
     }//GEN-LAST:event_tfAllgStatNameActionPerformed
 
     private void btAllgStatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAllgStatActionPerformed
@@ -839,10 +899,18 @@ public class impfenGUI extends javax.swing.JFrame {
         catch(NullPointerException e){
             taAllgStatOUT.setText("Patient nicht vorhanden! Bitte hinzufügen!");
         }
+        
+        // String Status = a1.AllgemeinerStatus(Patientenname);
+        // taAllgStatOUT.setText(Status);
+        // Patientenname = null;
+        // tfAllgStatName.setText("Name eingeben");
+        
     }//GEN-LAST:event_btAllgStatActionPerformed
 
+    //info
     private void tfInfoNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfInfoNameActionPerformed
         // TODO add your handling code here:
+        Patientenname = tfInfoName.getText();
     }//GEN-LAST:event_tfInfoNameActionPerformed
 
     private void btInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInfoActionPerformed
@@ -854,50 +922,91 @@ public class impfenGUI extends javax.swing.JFrame {
         catch(NullPointerException e){
             taInfoOUT.setText("Patient oder Impfung ist nicht vorhanden!");
         }
+        
+        // String Info = a1.InformationenAbfragen(Patientenname, Impfung);
+        // taInfoOUT.setText(Info);
+        // Patientenname = null;
+        // tfInfoName.setText("Name eingeben");
+        // Impfung = null;
+        // tfInfoImpfung.setText("Impfung");
+        
     }//GEN-LAST:event_btInfoActionPerformed
 
+    //suche
     private void btSuchenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSuchenActionPerformed
         // TODO add your handling code here:
+        tfSuchenName.setText("Name eingeben");
+        Patient P = a1.PatientSuchen(Patientenname);
+        taSuchenOUT.setText("Patientendaten: Name: "+P.getPatientenname()+"Geburtstag: "+P.getGeburtsdatum()+"Geschlecht: "+P.getGeschlecht()+"\n Adresse: "+P.getAdresse()+"Telefonnumer: "+P.getTelefonnummer());
+        Patientenname = null;
     }//GEN-LAST:event_btSuchenActionPerformed
 
+    //hinzufügen
     private void tfHzfGebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHzfGebActionPerformed
         // TODO add your handling code here:
+        Geburtsdatum = tfHzfGeb.getText();
     }//GEN-LAST:event_tfHzfGebActionPerformed
 
     private void tfHzfGeschlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHzfGeschlActionPerformed
         // TODO add your handling code here:
+        Geschlecht = tfHzfGeschl.getText();
     }//GEN-LAST:event_tfHzfGeschlActionPerformed
 
     private void tfHzfAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHzfAdrActionPerformed
         // TODO add your handling code here:
+        Adresse = tfHzfAdr.getText();
     }//GEN-LAST:event_tfHzfAdrActionPerformed
 
     private void tfHzfNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHzfNumActionPerformed
         // TODO add your handling code here:
+        Telefonnummer = tfHzfNum.getText();
     }//GEN-LAST:event_tfHzfNumActionPerformed
 
     private void btHzfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHzfActionPerformed
         // TODO add your handling code here:
+        a1.PatientHinzufuegen(Patientenname, Geburtsdatum, Geschlecht, Adresse, Telefonnummer);
+        Patientenname = null;
+        tfHzfName.setText("Name eingeben");
+        Geburtsdatum = null;
+        tfHzfGeb.setText("Geburtstag");
+        Geschlecht = null; 
+        tfHzfGeschl.setText("Geschlecht");
+        Adresse = null; 
+        tfHzfAdr.setText("Adresse");
+        Telefonnummer= null;
+        tfHzfNum.setText("Telefonnummer");
+        taHzfgOUT.setText("Patient wurde hinzugefügt");
+
     }//GEN-LAST:event_btHzfActionPerformed
 
+    //löschen
     private void tfLoeschenNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoeschenNameActionPerformed
         // TODO add your handling code here:
+        Patientenname = tfLoeschenName.getText();
     }//GEN-LAST:event_tfLoeschenNameActionPerformed
 
     private void btLoeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoeschenActionPerformed
         // TODO add your handling code here:
+        a1.PatientLoeschen(Patientenname);
+        Patientenname = null;
+        tfLoeschenName.setText("Name eingeben");
+        taLoeschenOUT.setText("Patient wurde gelöscht");
     }//GEN-LAST:event_btLoeschenActionPerformed
 
+    //ändern
     private void tfDatenPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDatenPatientNameActionPerformed
         // TODO add your handling code here:
+        Patientenname = tfDatenPatientName.getText();
     }//GEN-LAST:event_tfDatenPatientNameActionPerformed
 
     private void tfDatenZuAendernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDatenZuAendernActionPerformed
         // TODO add your handling code here:
+        Daten = tfDatenZuAendern.getText();
     }//GEN-LAST:event_tfDatenZuAendernActionPerformed
 
     private void tfDatenNeuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDatenNeuActionPerformed
         // TODO add your handling code here:
+        neueDaten = tfDatenNeu.getText();
     }//GEN-LAST:event_tfDatenNeuActionPerformed
 
     /**
