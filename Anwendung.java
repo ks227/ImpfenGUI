@@ -94,7 +94,7 @@ public class Anwendung
         if(H!=null)
         {
             Liste.remove(H);
-            System.out.println("Der Patient wurde erfolgreich gelöscht.");
+            //System.out.println("Der Patient wurde erfolgreich gelöscht.");
         }
 
         else
