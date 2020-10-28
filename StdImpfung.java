@@ -1,20 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
- 
-
 /**
- *
- * @author Konrad Sautter
- */
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-  /**
  * In der Klasse StdImpfung werden für jede Impfung die Attribute initialisiert.
  * Es wird der nächste Impftermin ausgegeben und der jeweilige Impfstatus wird geändert. 
  * 
@@ -25,7 +9,11 @@ import java.util.GregorianCalendar;
  * @version (02.10.2020)
  */
 
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class StdImpfung 
 {
@@ -64,14 +52,14 @@ public class StdImpfung
         abstaende= new int [2];
         switch(Impfname)
         {
-            case "HepatitisA": Information="bei Häufigem Reisen oder Kontakt zu Kranken, Abstand zwischen der ersten und zweiten Impfung 6 Monate";
+            case "HepatitisA": Information=" Bei Häufigem Reisen oder Kontakt zu Kranken. \nAbstand zwischen der ersten und zweiten Impfung 6 Monate";
             abstaende[0]=6;
             naechsteImpfung="0";
             Impfstatus=0;
             maxAnzahl=2;
             break;
             
-            case "HepatitisB": Information="Bei häufigem Reisen, geschwächter Immunabwehr und Kontakt zu Kranken, Impfung bei 2, 4 und 6 Monaten";
+            case "HepatitisB": Information=" Bei häufigem Reisen, geschwächter Immunabwehr und Kontakt zu Kranken. \nImpfung bei 2, 4 und 6 Monaten";
             abstaende[0]=2;
             abstaende[1]=2;
             naechsteImpfung="0";
@@ -79,28 +67,28 @@ public class StdImpfung
             maxAnzahl=3;
             break;
             
-            case "Mumps": Information="Viruserkrankung über Tröpfcheninfektion, erste Impfung bei 11 Monaten und zweite bei 15 Monaten ";
+            case "Mumps": Information=" Viruserkrankung über Tröpfcheninfektion. \nErste Impfung bei 11 Monaten und zweite bei 15 Monaten ";
             abstaende[0]=4;
             naechsteImpfung="0";
             Impfstatus=0;
             maxAnzahl=2;
             break;
 
-            case "Roeteln": Information="Erwachsene Frauen und Personal, welches Kontakt zu Schwangeren und Kleinkindern hat, erste Impfung nach 11 Monaten und die zweite nach 15";
+            case "Roeteln": Information=" Erwachsene Frauen und Personal, welches Kontakt zu Schwangeren und Kleinkindern hat. \nErste Impfung nach 11 Monaten und die zweite nach 15";
             abstaende[0]=4;
             naechsteImpfung="0";
             Impfstatus=0;
             maxAnzahl=2;
             break;
 
-            case "Masern": Information="Besonders gefährdet sind ungeimpfte Kleinkinder und Jugendliche, erste Impfung nach 13 Monaten und die zweite nach 17 Monaten  ";
+            case "Masern": Information=" Besonders gefährdet sind ungeimpfte Kleinkinder und Jugendliche, \nErste Impfung nach 13 Monaten und die zweite nach 17 Monaten  ";
             abstaende[0]=4;   
             naechsteImpfung="0";
             Impfstatus=0;
             maxAnzahl=2;
             break;
             
-            case "Tetanus": Information="Soll Wundstarrkrampf durch Krankheitserreger verhindern, erste Impfung nach 2 Monaten, die zweite nach 4 Monaten und die letzte nach 10 Monaten, soll alle 10 Jahre wiederholt werden";
+            case "Tetanus": Information=" Soll Wundstarrkrampf durch Krankheitserreger verhindern. \nErste Impfung nach 2 Monaten, die zweite nach 4 Monaten und die letzte nach 10 Monaten, soll alle 10 Jahre wiederholt werden";
             abstaende[0]=2;
             abstaende[1]=6;
             naechsteImpfung="0";
@@ -174,7 +162,6 @@ public class StdImpfung
      * Java Klassenbibliothek importiert. Wenn keine weitere Impfung notwenig ist, wird eine Exception geworfen. 
      * @param keine
      * @return String durch externen Methodenaufruf von importierte Klassen.
-
      * 
      */
     public  String  Datum () throws Exception
@@ -212,5 +199,3 @@ public class StdImpfung
     }
 
 }
-
-  
