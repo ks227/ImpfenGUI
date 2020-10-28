@@ -1,16 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
- 
-
-/**
- *
- * @author Konrad Sautter
- */
 import java.util.*;
-    /**
+/**
  * In der Klasse Patient wird dessen Name, Geburtsdatum, Geschlecht, Adresse und Telefonnummer gepeichert. 
  * Jedem Patienten wird automatisch ein Paket mit sechs Standardimpfungen zugewiesen. Dem Patient kann jede Standardimpfung 
  * extra geimpft werden. Es kann sein Impfstatus für einzelne Impfungen, sowie die bei den StdImpfungen
@@ -246,11 +235,11 @@ public class Patient
 
     {
         Set<String> Impfnamen = HashImpfungen.keySet();
-        String Ausgabe = "";
+        String Ausgabe = " ";
         for(String s: Impfnamen)
         {
             String Impfstatus = Impfuebersicht(s);
-            Ausgabe = Ausgabe + Impfstatus;
+            Ausgabe = Ausgabe + Impfstatus + "\n ";
         }
         return Ausgabe; 
     }
@@ -387,8 +376,3 @@ public class Patient
         return Telefonnummer;
     }
 }
-
-    
-
-
-
