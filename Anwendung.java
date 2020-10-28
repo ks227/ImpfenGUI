@@ -1,18 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
- 
-
 /**
- *
- * @author Konrad Sautter
- */
-import java.util.ArrayList;
-import java.util.Date;
-import java.io.*;
-    /**
  * Klassenname: Anwendung
  * Über Anwendung wird Patientenaufnahme und -verwaltung gesteuert. Außerdem kann geimpft werden. Von der Oberfläche soll auf diese Klasse
  * zugegriffen werden, um die nötigen Methoden auszuführen.
@@ -22,7 +8,9 @@ import java.io.*;
  * @author Konrad Sautter, Sophia Parpoulas 
  * @version 02.10.2020
  */
-
+import java.util.ArrayList;
+import java.util.Date;
+import java.io.*;
 public class Anwendung
 
 {
@@ -67,7 +55,7 @@ public class Anwendung
      * @param: String Name 
      * @return: Objekt Patient
      */ 
-    public Patient PatientSuchen(String Name)// throws Exception
+    public Patient PatientSuchen(String Name)throws Exception
     {
         for (Patient e: Liste)
         {
@@ -76,7 +64,7 @@ public class Anwendung
                 return e;
             }
 
-            //else throw new Exception ("Patien nicht vorhanden");
+            else throw new Exception ("Patien nicht vorhanden");
 
         }
         return null;
@@ -88,7 +76,7 @@ public class Anwendung
      * @param: String Name
      * @return: Keine
      */
-    public void PatientLoeschen(String Name) throws NullPointerException
+    public void PatientLoeschen(String Name) throws Exception
     {
         Patient H = PatientSuchen(Name);
         if(H!=null)
@@ -119,17 +107,17 @@ public class Anwendung
 
             switch(Impfname)
             {
-                case "HepatitisA": x="Impfung durchgefuehrt. Naechste Impfung:   " +B.HepatitisAImpfen();
+                case "HepatitisA": x=" Impfung durchgefuehrt. Naechste Impfung:   " +B.HepatitisAImpfen();
                 break;
-                case "HepatitisB": x="Impfung durchgefuehrt. Naechste Impfung:  " +B.HepatitisBImpfen();
+                case "HepatitisB": x=" Impfung durchgefuehrt. Naechste Impfung:  " +B.HepatitisBImpfen();
                 break;
-                case "Masern": x="Impfung durchgefuehrt. Naechste Impfung:  " +B.MasernImpfen();
+                case "Masern": x=" Impfung durchgefuehrt. Naechste Impfung:  " +B.MasernImpfen();
                 break;
-                case "Mumps": x="Impfung durchgefuehrt. Naechste Impfung:  " +B.MumpsImpfen();
+                case "Mumps": x=" Impfung durchgefuehrt. Naechste Impfung:  " +B.MumpsImpfen();
                 break;
-                case"Roeteln": x="Impfung durchgefuehrt. Naechste Impfung:  " +B.RoetelnImpfen();
+                case"Roeteln": x=" Impfung durchgefuehrt. Naechste Impfung:  " +B.RoetelnImpfen();
                 break;
-                case "Tetanus": x="Impfung durchgefuehrt. Naechste Impfung:  " +B.TetanusImpfen();
+                case "Tetanus": x=" Impfung durchgefuehrt. Naechste Impfung:  " +B.TetanusImpfen();
                 break;
                 default: x="Impfung nicht vorhanden";
                 break;
@@ -148,7 +136,7 @@ public class Anwendung
      * @param: String: Name, Impfname
      * @return: int Status
      */
-    public String StatusAbfragen(String Name, String Impfname) throws NullPointerException
+    public String StatusAbfragen(String Name, String Impfname) throws Exception
     {
         Patient D= PatientSuchen(Name);
         if(D!=null)
@@ -166,7 +154,7 @@ public class Anwendung
      * @param: String: Name
      * @return: String Status
      */
-    public String AllgemeinerStatus(String Name) throws NullPointerException
+    public String AllgemeinerStatus(String Name) throws Exception
     {
         Patient F= PatientSuchen(Name);
         if(F!=null)
@@ -186,7 +174,7 @@ public class Anwendung
      * @param: String: Name, Impfname
      * @return: String Info
      */
-    public String InformationenAbfragen(String Name, String Impfname) throws NullPointerException
+    public String InformationenAbfragen(String Name, String Impfname) throws Exception
     {
         Patient E = PatientSuchen(Name);
         if(E!=null)
@@ -203,7 +191,7 @@ public class Anwendung
      * @param: String: zuAenderndeDaten, Patientenname, neueDaten
      * @return: String: Bestätigung der Änderung im Falle einer der cases. Im Falle eines default: Hinfauf auf falsche Eingabe
      */
-    public String PatientendatenAendern(String zuAenderndeDaten, String Patientenname, String neueDaten)
+    public String PatientendatenAendern(String zuAenderndeDaten, String Patientenname, String neueDaten) throws Exception
     {
         Patient X= PatientSuchen(Patientenname);
 
